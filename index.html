@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShoeZone - Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<style>
+/* Slideshow specific styles */
+.slideshow-container {
+  max-width: 100%; /* Adjust as needed */
+  position: relative;
+  margin: auto;
+  height: 100%; /* Ensure it takes the height of the hero section */
+  overflow: hidden; /* Hide overflowing parts of images */
+}
+
+.mySlides {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.mySlides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container without distortion */
+  filter: brightness(0.7); /* Dim the image slightly for text readability */
+}
+
+/* Text over the slideshow images */
+.slide-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  width: 80%; /* Adjust width for better text wrapping */
+  font-family: 'Oswald', sans-serif; /* Apply Oswald font */
+}
+
+/* Dots for slideshow navigation */
+.dot-container {
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active-dot, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Responsive adjustments for slideshow */
+@media (max-width: 768px) {
+  .hero-slideshow {
+    height: 300px;
+  }
+  .slide-text {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+<body class="light-mode">
+  <header class="classic-header">
+    <div class="container classic-header-inner">
+      <div class="logo-container">
+        <a href="index.html"><h1>ShoeZone</h1></a>      </div>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+        <a href="shop.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="checkout.html" class="nav-link"><i class="fas fa-shoe-prints"></i> Checkout</a>
+        <a href="help.html" class="nav-link"><i class="fas fa-circle-question"></i> Help</a>
+        <a href="team.html" class="nav-link"><i class="fas fa-users"></i> Team</a>
+      </nav>
+      <div class="header-right">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search shoes..." />
+          <button class="btn-icon"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="icon-group">
+          <button class="btn-icon"><i class="fas fa-heart"></i><span class="badge wishlist-count">0</span></button>
+          <button class="btn-icon"><i class="fas fa-shopping-cart"></i><span class="badge cart-count">0</span></button>
+          <button id="theme-toggle" class="btn-icon"><i class="fas fa-moon"></i></button>
+        </div>
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-slideshow">
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="hero.jpg" alt="Hero Image 1">
+          <div class="slide-text">Descoperă cele mai noi colecții!</div>
+        </div>
+        <div class="mySlides fade">
+          <img src="hero1.png" alt="Hero Image 2">
+          <div class="slide-text">Stil și confort la fiecare pas.</div>
+        </div>
+        <div class="mySlides fade">
+          <img src="hero2.png" alt="Hero Image 3">
+          <div class="slide-text">Calitate superioară, prețuri imbatabile.</div>
+        </div>
+      </div>
+      <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </section>
+
+    <section class="featured-products main-container">
+      <h2>Produse Recomandate</h2>
+      <div id="featuredProductsGrid" class="products-grid">
+        </div>
+    </section>
+
+    <section class="call-to-action">
+      <div class="container">
+        <h2>Găsește perechea perfectă!</h2>
+        <p>Explorează selecția noastră vastă de încălțăminte pentru fiecare stil și ocazie.</p>
+        <a href="shop.html" class="btn btn-primary">Shop Now</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="cart-popup" class="cart-sidebar">
+    <div class="cart-sidebar-header">
+      <h2>Coșul tău</h2>
+      <button class="btn-icon close-cart-btn"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="cart-popup-body" class="cart-sidebar-body">
+      </div>
+    <div class="cart-sidebar-footer">
+      <div class="cart-total-display">
+        <span>Total:</span>
+        <strong id="cart-total">$0.00</strong>
+      </div>
+      <a href="checkout.html" class="btn btn-primary">Finalizează Comanda</a>
+    </div>
+  </div>
+
+  <div id="wishlist-popup" class="wishlist-sidebar">
+    <div class="wishlist-sidebar-header">
+      <h2>Lista ta de Dorințe</h2>
+      <button class="btn-icon close-wishlist-btn"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="wishlist-popup-body" class="wishlist-sidebar-body">
+      </div>
+  </div>
+
+  <footer>
+    <div class="footer-cols">
+      <div>
+        <div class="logo">👟</div>
+        <p> 2025 Chisinau , Moldova</p>
+        <p>&copy; ShoeZone</p>
+      </div>
+      <div>
+        <h4>Main Menu</h4>
+        <ul>
+          <li><a href="index.html" style="color: #fff;">Home</a></li>
+          <li><a href="team.html" style="color: #fff;">About</a></li>
+          <li><a href="shop.html" style="color: #fff;">Shop</a></li>
+          <li><a href="help.html" style="color: white;">Help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li>The Company</li>
+          <li>Careers</li>
+          <li>Press</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="team.html" style="color: #fff;">The team</a></li>
+          <li>Our History</li>
+          <li>Brand Motto</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find Us On</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/?locale=ro_RO" style="color: #fff;">Facebook</a></li>
+          <li><a href="https://x.com/" style="color: #fff;">X / Twitter</a></li>
+          <li><a href="https://www.instagram.com/" style="color: #fff;">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

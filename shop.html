@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShoeZone - Shop</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+  <header class="classic-header">
+    <div class="container classic-header-inner">
+      <div class="logo-container">
+        <a href="index.html"><h1>ShoeZone</h1></a>
+      </div>
+      <nav class="main-nav" id="mainNav"> <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="shop.html" class="nav-link active"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="checkout.html" class="nav-link"><i class="fas fa-shoe-prints"></i> Checkout</a>
+        <a href="help.html" class="nav-link"><i class="fas fa-circle-question"></i> Help</a>
+        <a href="team.html" class="nav-link"><i class="fas fa-users"></i> Team</a>
+      </nav>
+      <div class="header-right">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search shoes..." />
+          <button class="btn-icon"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="icon-group">
+          <button class="btn-icon"><i class="fas fa-heart"></i><span class="badge wishlist-count">0</span></button>
+          <button class="btn-icon"><i class="fas fa-shopping-cart"></i><span class="badge cart-count">0</span></button>
+          <button id="theme-toggle" class="btn-icon"><i class="fas fa-moon"></i></button>
+        </div>
+      </div>
+      <div class="menu-toggle"> <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <div class="transparent-div" style="color: transparent;">.</div>
+
+  <main>
+    <section class="shop-filters-section container">
+      <div class="filters-container">
+        <div class="filter-group">
+          <h4>Category</h4>
+          <div class="category-tags">
+            <button class="tag-btn active" data-category="all">All</button>
+            <button class="tag-btn" data-category="Men">Men</button>
+            <button class="tag-btn" data-category="Women">Women</button>
+            <button class="tag-btn" data-category="Kids">Kids</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Brand</h4>
+          <div class="brand-filters" id="brand-filters">
+            </div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Price Range</h4>
+          <input type="range" id="price-range" min="0" max="200" value="200" step="1">
+          <span id="price-value">$200.00</span>
+        </div>
+
+        <div class="filter-group">
+          <h4>Sort By</h4>
+          <select id="sort-select">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A-Z</option>
+            <option value="name-desc">Name: Z-A</option>
+            <option value="rating-desc">Rating</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-products-section main-container">
+      <div id="products-grid" class="products-grid">
+        </div>
+    </section>
+  </main>
+
+  <div id="productModal" class="product-modal">
+    <div class="modal-content">
+      <button class="close-button">&times;</button>
+      <div class="modal-product-details">
+        <div class="modal-product-image-container">
+          <img id="modal-product-image" src="" alt="Product Image">
+        </div>
+        <div class="modal-product-info">
+          <span id="modal-product-category" class="product-category"></span>
+          <h3 id="modal-product-name" class="product-name"></h3>
+          <div id="modal-product-brand" class="product-brand"></div>
+          <div id="modal-product-rating" class="product-rating"></div>
+          <div class="product-price">
+            <span id="modal-product-price" class="current-price"></span>
+            <span id="modal-product-old-price" class="old-price"></span>
+          </div>
+          <p id="modal-product-description" class="product-description"></p>
+
+          <div class="modal-options">
+            <div class="form-group">
+              <label for="modal-size-select">Size:</label>
+              <select id="modal-size-select">
+                <option value="">Select Size</option>
+                </select>
+            </div>
+            <div class="form-group quantity-control">
+              <label for="modal-quantity-input">Quantity:</label>
+              <button id="qty-dec">-</button>
+              <input type="number" id="qty-input" value="1" min="1">
+              <button id="qty-inc">+</button>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button id="modal-add-to-cart" class="btn btn-primary">Add to Cart</button>
+            <button id="modal-add-to-wishlist" class="btn btn-secondary">Add to Wishlist</button>
+          </div>
+
+          <div class="review-section">
+            <h4>Add a Review</h4>
+            <div id="review-stars" class="stars-selection">
+              </div>
+            <textarea id="review-text" placeholder="Write your review here..."></textarea>
+            <button id="submit-review" class="btn btn-primary">Submit Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-popup" class="cart-sidebar">
+    <div class="cart-sidebar-header">
+      <h2>Shopping Cart</h2>
+      <button onclick="document.getElementById('cart-popup').classList.remove('active')" class="btn-icon">&times;</button>
+    </div>
+    <div id="cart-popup-body" class="cart-sidebar-body"></div>
+    <div class="cart-sidebar-footer">
+      <div class="cart-total-display">
+        <strong>Total:</strong>
+        <strong id="cart-total">$0.00</strong>
+      </div>
+      <a href="checkout.html"><button class="btn-primary">Checkout</button></a>
+    </div>
+  </div>
+
+  <div id="wishlist-popup" class="wishlist-sidebar">
+    <div class="wishlist-sidebar-header">
+      <h2>Wishlist</h2>
+      <button onclick="document.getElementById('wishlist-popup').classList.remove('active')" class="btn-icon">&times;</button>
+    </div>
+    <div id="wishlist-popup-body" class="wishlist-sidebar-body"></div>
+  </div>
+
+  <footer>
+    <div class="footer-cols">
+      <div>
+        <div class="logo">👟</div>
+        <p> 2025 Chisinau , Moldova</p>
+        <p>&copy; ShoeZone</p>
+      </div>
+      <div>
+        <h4>Main Menu</h4>
+        <ul>
+          <li><a href="index.html" style="color: #fff;">Home</a></li>
+          <li><a href="team.html" style="color: #fff;">About</a></li>
+          <li><a href="shop.html" style="color: #fff;">Shop</a></li>
+          <li><a href="help.html" style="color: white;">Help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li>The Company</li>
+          <li>Careers</li>
+          <li>Press</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="team.html" style="color: #fff;">The team</a></li>
+          <li>Our History</li>
+          <li>Brand Motto</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find Us On</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/?locale=ro_RO" style="color: #fff;">Facebook</a></li>
+          <li><a href="https://x.com/" style="color: #fff;">X / Twitter</a></li>
+          <li><a href="https://www.instagram.com/" style="color: #fff;">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

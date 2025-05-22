@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Echipa Noastră | ShoeZone</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+  <header class="classic-header">
+    <div class="container classic-header-inner">
+      <div class="logo-container">
+        <a href="index.html"><h1>ShoeZone</h1></a>
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="shop.html" class="nav-link"><i class="fas fa-shopping-bag"></i> Shop</a>
+        <a href="checkout.html" class="nav-link"><i class="fas fa-shoe-prints"></i> Checkout</a>
+        <a href="help.html" class="nav-link"><i class="fas fa-circle-question"></i> Help</a>
+        <a href="team.html" class="nav-link active"><i class="fas fa-users"></i> Team</a>
+      </nav>
+      <div class="header-right">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search shoes..." />
+          <button class="btn-icon"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="icon-group">
+          <button class="btn-icon"><i class="fas fa-heart"></i><span class="badge wishlist-count">0</span></button>
+          <button class="btn-icon"><i class="fas fa-shopping-cart"></i><span class="badge cart-count">0</span></button>
+          <button id="theme-toggle" class="btn-icon"><i class="fas fa-moon"></i></button>
+        </div>
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="team-section">
+      <h2>Echipa Noastră</h2>
+      <div class="team-member">
+        <img src="/img/Vadim.png" alt="Vadim Josan">
+        <h3>Vadim Josan</h3>
+        <p>Fondator & Dezvoltator Principal</p>
+        <p>Vadim este viziunea din spatele ShoeZone, combinând pasiunea pentru încălțăminte cu expertiza în dezvoltare web pentru a crea o experiență de cumpărături online impecabilă.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <h1 style="text-align: center;">Site-ul este creat de Vadim Josan gupa W-2232</h1>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-cols">
+      <div>
+        <div class="logo">👟</div>
+        <p> 2025 Chisinau , Moldova</p>
+        <p>&copy; ShoeZone</p>
+      </div>
+      <div>
+        <h4>Main Menu</h4>
+        <ul>
+          <li><a href="index.html" style="color: #fff;">Home</a></li>
+          <li><a href="team.html" style="color: #fff;">About</a></li>
+          <li><a href="shop.html" style="color: #fff;">Shop</a></li>
+          <li><a href="help.html" style="color: white;">Help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li>The Company</li>
+          <li>Careers</li>
+          <li>Press</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="team.html" style="color: #fff;">The team</a></li>
+          <li>Our History</li>
+          <li>Brand Motto</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find Us On</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/?locale=ro_RO" style="color: #fff;">Facebook</a></li>
+          <li><a href="https://x.com/" style="color: #fff;">X / Twitter</a></li>
+          <li><a href="https://www.instagram.com/" style="color: #fff;">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cart-popup" class="cart-sidebar">
+  <div class="cart-sidebar-header">
+    <h2>Coșul tău</h2>
+    <button class="btn-icon close-cart-btn"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="cart-popup-body" class="cart-sidebar-body">
+    </div>
+  <div class="cart-sidebar-footer">
+    <div class="cart-total-display">
+      <span>Total:</span>
+      <strong id="cart-total">$0.00</strong>
+    </div>
+    <a href="checkout.html" class="btn btn-primary">Finalizează Comanda</a>
+  </div>
+</div>
+
+<div id="wishlist-popup" class="wishlist-sidebar">
+  <div class="wishlist-sidebar-header">
+    <h2>Lista ta de Dorințe</h2>
+    <button class="btn-icon close-wishlist-btn"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="wishlist-popup-body" class="wishlist-sidebar-body">
+    </div>
+</div>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
